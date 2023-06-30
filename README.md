@@ -26,7 +26,7 @@ Aimed for personal use and learning as you would publish your API key to the wor
 2. Select an agent from the dropdown menu.
 3. Type your message in the input field and click the "Send" button or press Enter to send it.
 4. The assistant's response will appear in the chat log, along with the token count used for the response.
-5. If you want to change the agent, you can do so from the dropdown menu. Note that changing the agent will reset the chat.
+5. If you want to change to another agent, you can do so from the dropdown menu. Note that changing the agent will reset the chat.
 
 ## Code Structure
 
