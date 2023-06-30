@@ -59,15 +59,15 @@ $(document).ready(function () {
             }),
             success: function (response) {
                 const answer = response.choices[0].message.content;
-                const finReason = response.choices[0].finish_reason;
+                const finish_reason = response.choices[0].finish_reason;
                 $('#chat-log').append('<p><strong>Assistant:</strong> ' + answer + '</p>');
             
                 // Add the assistant's message to the conversation history
                 conversationHistory.push({ role: 'assistant', content: answer });
             
                 // Update the token count display
-                const tokensUsed = response.usage.total_tokens;
-                $('#TokenUse').text('Used ' + tokensUsed + ' tokens. stop=' + finReason + ' ' + AddData);
+                const total_tokens = response.usage.total_tokens;
+                $('#TokenUse').text('Used ' + total_tokens + ' tokens. finish_reason=' + finish_reason + ' ' + AddData);
             },
             error: function (xhr) {
                 console.error(xhr.responseText);
