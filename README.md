@@ -7,8 +7,8 @@ Aimed for personal use and learning as you would publish your API key to the wor
 
 ## Features
 
-- Multiple agents to choose from, each with a unique personality.
 - Option to select different GPT models.
+- Multiple agents to choose from, each with a unique personality.
 - Displays the token count used for each response.
 - Conversation history is maintained for the duration of the session.
 
