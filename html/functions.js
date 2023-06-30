@@ -1,5 +1,7 @@
 $(document).ready(function () {
     const API_ENDPOINT = 'https://api.openai.com/v1/chat/completions';
+    const temperature = 0.8;// Set the temperature parameter
+    const max_tokens = 400;// Reserve this many tokens to the response
 
     // Initialize an empty array to store the conversation history
     let conversationHistory = [];
@@ -48,7 +50,9 @@ $(document).ready(function () {
             data: JSON.stringify({
                 model: selectedModel,
                 // Prepend the conversation history to the messages
-                messages: [{ role: 'system', content: sysmes }].concat(conversationHistory)
+                messages: [{ role: 'system', content: sysmes }].concat(conversationHistory),
+                temperature: temperature, // Set the temperature parameter
+                max_tokens: max_tokens // Reserve this many tokens to the response
             }),
             success: function (response) {
                 const answer = response.choices[0].message.content;
