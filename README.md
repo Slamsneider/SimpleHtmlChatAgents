@@ -10,8 +10,8 @@ This is a simple chat application that uses OpenAI's GPT models to generate resp
 
 ## How to Use
 
-1. Select a model from the dropdown menu. The options are GPT-3.5-Turbo (4096 Tokens), GPT-3.5-Turbo-16K (16384 Tokens), and GPT-4 (8192 Tokens).
-2. Select an agent from the dropdown menu. The options are Default, Marvin (the Paranoid Android from The Hitchhiker's Guide to the Galaxy), and The Pirate (Dorothy the pirate).
+1. Select a model from the dropdown menu.
+2. Select an agent from the dropdown menu.
 3. Type your message in the input field and click the "Send" button or press Enter to send it.
 4. The assistant's response will appear in the chat log, along with the token count used for the response.
 5. If you want to change the agent, you can do so from the dropdown menu. Note that changing the agent will reset the chat.
