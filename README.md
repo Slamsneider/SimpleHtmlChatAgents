@@ -54,8 +54,8 @@ The max_tokens parameter controls how many tokens should be reserved to contain 
 
 ### finish_reason
 The finish_reason parameter indicates the reason why the response ended.
-- `length`: BAD - The response reached the max_tokens limit. (use "continue" as next prompt to continue the response)
 - `stop`: GOOD - The response contained the stop sequence.
+- `length`: BAD - The response reached the max_tokens limit. (use "continue" as next prompt to continue the response)
 
 
 ## Important Note
