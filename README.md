@@ -13,7 +13,12 @@ Aimed for personal use and learning as you would publish your API key to the wor
 - Conversation history is maintained for the duration of the session.
 
 ## Installation
-... and Open the `functions.js` file in a text editor. Find the line that contains `YOUR_API_KEY_HERE` and replace it with your OpenAI API key. Save the file and open the `index.html` file in your browser.
+1. Press the green "Code" button on the project page and choose "Download ZIP" to download the project.
+2. Once downloaded, unzip the html folder to your desired location.
+3. Open the `functions.js` file in a text editor.
+4. Find the line that contains `YOUR_API_KEY_HERE` and replace it with your OpenAI API key.
+5. Save the changes made in the `functions.js` file.
+6. Now, open the `index.html` file in your browser to start using the project.
 
 ## How to Use
 
