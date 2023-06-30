@@ -36,10 +36,10 @@ Aimed for personal use and learning as you would publish your API key to the wor
 - `functions.js`: This file contains the main functionality of the application, including sending messages and handling responses.
 - `styles.css`: This file contains the CSS styles for the application.
 
-## Note
+## Important Note
 
-This application uses OpenAI's GPT-3.5-Turbo model, which is a powerful language model capable of understanding and generating human-like text. However, it's important to note that the model doesn't have any real understanding of the world and doesn't have access to personal data about individuals unless it has been shared in the course of the conversation. It generates responses based on a mixture of licensed data, data created by human trainers, and publicly available data.
+Do not use this application on a public server as it will expose your API key to the world. This application is intended for 'local' use only.
 
 ## Disclaimer
 
-This application is for demonstration purposes only and is not intended to be used for any harmful or malicious activities. The developers are not responsible for any misuse of the application.
+This application is made for learning and is not intended to be a full fledged chat application.
