@@ -21,7 +21,7 @@ Aimed for local use and learning as you would publish your API key to the world 
 - Conversation history is maintained for the duration of the session.
 
 ## Installation
-1. Press the green "Code" button on the project page and choose "Download ZIP" to download the project.
+1. Press the green "Code" button on this page and choose "Download ZIP" to download the project.
 2. Once downloaded, unzip the html folder to your desired location.
 3. **RENAME** `apikey.js.install` to `apikey.js` and open the file in a text editor.
 4. Replace `YOUR_API_KEY_HERE` with your OpenAI API key.
