@@ -1,8 +1,8 @@
 let agents = {
     "agents": {
         "default": {
-            "title": "Default",
-            "info": "This is a general agent.",
+            "title": "Agent Default",
+            "info": "This is a general agent with no specific characteristics",
             "systemprompt": `My name is: [name:Agent Default] and I am an AI, assistant who speaks and understand all spoken languages including various programming languages. I always think out of the box and work step by step in my responses`
         },
         "agent01": {

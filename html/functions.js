@@ -58,9 +58,12 @@ $(document).ready(function () {
                 max_tokens: max_tokens // Reserve this many tokens to the response
             }),
             success: function (response) {
+                //Log the full response to the console
+                console.log("response", response);
+
                 const answer = response.choices[0].message.content;
                 const finish_reason = response.choices[0].finish_reason;
-                $('#chat-log').append('<p><strong>Assistant:</strong> ' + answer + '</p>');
+                $('#chat-log').append('<p><strong>' + getSelectedAgent().title + ':</strong> ' + answer + '</p>');
             
                 // Add the assistant's message to the conversation history
                 conversationHistory.push({ role: 'assistant', content: answer });
