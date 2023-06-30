@@ -57,8 +57,6 @@ When you send a request then the token count consists of the following:
 Those added together must be less than the total tokens available for the model.
 
 
-### Temperature
-The temperature parameter controls the randomness of the response. Lower values will result in more predictable responses, while higher values will result in more surprising responses. The default value is 0.7.
 
 ### Max Tokens
 The max_tokens parameter controls how many tokens should be reserved to contain the response.
@@ -67,6 +65,9 @@ The max_tokens parameter controls how many tokens should be reserved to contain 
 The finish_reason parameter indicates the reason why the response ended.
 - `stop`: GOOD - The response contained the stop sequence.
 - `length`: BAD - The response reached the max_tokens limit. (use the word "continue" as next prompt to continue the response)
+
+### Temperature
+The temperature parameter controls the randomness of the response. Lower values will result in more predictable responses, while higher values will result in more surprising responses. The default value is 0.7.
 
 
 ## Important Note
