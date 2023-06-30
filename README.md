@@ -36,6 +36,7 @@ Aimed for local use and learning as you would publish your API key to the world 
 3. Type your message in the input field and click the "Send" button or press Enter to send it.
 4. The agent's response will appear in the chat log.
 5. If you want to change to another agent, you can do so from the dropdown menu. Note that changing the agent will reset the chat history.
+6. Add your own agents by editing the `agents.js` file.
 
 ## Code Structure
 
