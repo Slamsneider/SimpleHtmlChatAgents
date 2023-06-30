@@ -55,9 +55,7 @@ When you send a request then the token count consists of the following:
 
 **`system prompt + history + user prompt + max_tokens`**
 
-Those added together must be less than the total tokens available for the model.
-
-
+Those added together must be less than the total tokens available for the model or you will get an error.
 
 ### Max Tokens
 The max_tokens parameter controls how many tokens should be reserved to contain the response.
