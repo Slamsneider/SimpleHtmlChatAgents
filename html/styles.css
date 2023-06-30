@@ -1,0 +1,11 @@
+body {
+    font-family: Tahoma, sans-serif;
+}
+
+td {
+    vertical-align: top;
+}
+
+.small {
+    font-size: 0.8em;
+}

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="functions.js"></script>
+    <script src="agents.js"></script>
+</head>
+
+<body>
+    <label for="model-dropdown">Model:</label>
+    <select id="model-dropdown">
+        <option value="gpt-3.5-turbo">GPT-3.5-TURBO | 4096 Tokens</option>
+        <option value="gpt-3.5-turbo-16k">GPT-3.5-TURBO-16K | 16384 Tokens</option>
+        <option value="gpt-4">GPT-4 | 8192 Tokens (High IQ)</option>
+    </select>
+    <hr />
+    <label for="agent-dropdown">Agent:</label>
+    <select id="agent-dropdown"></select> <span class="small">OBS: changing agent will reset the chat</span>
+    <p id="agent-info"></p>
+    <hr />
+    <div id="chat-container">
+        <input type="text" id="user-input" placeholder="Type your message...">
+        <button id="send-btn">Send</button> <span class="small" id="TokenUse">Last tokencount will display here</span>
+        <div id="chat-log"></div>
+    </div>
+</body>
+
+</html>
