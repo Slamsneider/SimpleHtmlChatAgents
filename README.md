@@ -69,7 +69,7 @@ The finish_reason parameter indicates the reason why the response ended.
 The temperature parameter controls the randomness of the response. Lower values will result in more predictable responses, while higher values will result in more surprising responses. The default value is 0.7.
 
 
-## Important Note ⚠️
+## ⚠️Important Note 
 
 Do not use this application on a public server as it will expose your API key to the world. This application is intended for 'local' use only.
 
