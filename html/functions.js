@@ -2,11 +2,17 @@ $(document).ready(function () {
     const API_ENDPOINT = 'https://api.openai.com/v1/chat/completions';
     const temperature = 0.8;// Set the temperature parameter
     const max_tokens = 400;// Reserve this many tokens to the response
+    const AddData = "(temp=" + temperature + " | max_tokens=" + max_tokens + ")"
 
     // Initialize an empty array to store the conversation history
     let conversationHistory = [];
+    
+    // Initialize the agent dropdown
+    populateAgentDropdown();
+    //initialize the token count display
+    $('#TokenUse').text('Tokens Used: 0 ' + AddData);
 
-    // Populate the agent dropdown
+    // ASSORTED FUNCTIONS
     function populateAgentDropdown() {
         let dropdown = $('#agent-dropdown');
         dropdown.empty();
@@ -18,7 +24,6 @@ $(document).ready(function () {
         showAgentInfo()
     }
 
-    // Get the selected agent as an object
     function getSelectedAgent() {
         let selectedAgentKey = $('#agent-dropdown').val();
         return agents.agents[selectedAgentKey];
@@ -36,7 +41,7 @@ $(document).ready(function () {
         // Add the user's message to the conversation history
         conversationHistory.push({ role: 'user', content: userInput });
 
-        let sysmes = getSelectedAgent().systemprompt;
+        let sysprom = getSelectedAgent().systemprompt;
 
         let selectedModel = $('#model-dropdown').val();
 
@@ -50,7 +55,7 @@ $(document).ready(function () {
             data: JSON.stringify({
                 model: selectedModel,
                 // Prepend the conversation history to the messages
-                messages: [{ role: 'system', content: sysmes }].concat(conversationHistory),
+                messages: [{ role: 'system', content: sysprom }].concat(conversationHistory),
                 temperature: temperature, // Set the temperature parameter
                 max_tokens: max_tokens // Reserve this many tokens to the response
             }),
@@ -63,7 +68,7 @@ $(document).ready(function () {
 
                 // Update the token count display
                 const tokensUsed = response.usage.total_tokens;
-                $('#TokenUse').text('Tokens Used: ' + tokensUsed);
+                $('#TokenUse').text('Tokens Used: ' + tokensUsed + ' ' + AddData);
             },
             error: function (xhr) {
                 console.error(xhr.responseText);
@@ -71,8 +76,6 @@ $(document).ready(function () {
         });
     }
 
-    // Initialize the agent dropdown
-    populateAgentDropdown();
 
     $('#send-btn').click(sendMessage);
     $('#user-input').keypress(function (e) {
@@ -88,7 +91,7 @@ $(document).ready(function () {
         conversationHistory = [];
         // Clear the chat log
         $('#chat-log').empty();
-        $('#TokenUse').text('Tokens Used: 0');
+        $('#TokenUse').text('Tokens Used: 0 ' + AddData);
     });
 
     function showAgentInfo() {
