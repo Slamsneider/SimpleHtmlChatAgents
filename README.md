@@ -34,8 +34,8 @@ Aimed for local use and learning as you would publish your API key to the world 
 2. Select an agent from the dropdown menu.
 3. Type your message in the input field and click the "Send" button or press Enter to send it.
 4. The agent's response will appear in the chat log.
-5. The token count used for the response and the finish reason is displayed together with the settings for temperature and max_tokens.
-6. If you want to change to another agent, you can do so from the dropdown menu. Note that changing the agent will reset the chat.
+5. Display of the token count used for the response, finish_reason and current settings for temperature and max_tokens.
+6. If you want to change to another agent, you can do so from the dropdown menu. Note that changing the agent will reset the chat history.
 
 ## Code Structure
 
