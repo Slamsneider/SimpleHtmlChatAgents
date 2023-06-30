@@ -16,7 +16,7 @@ Aimed for personal use and learning as you would publish your API key to the wor
 1. Press the green "Code" button on the project page and choose "Download ZIP" to download the project.
 2. Once downloaded, unzip the html folder to your desired location.
 3. Open the `apikey.js` file in a text editor.
-4. Replace  YOUR_API_KEY_HERE with your OpenAI API key.
+4. Replace `YOUR_API_KEY_HERE` with your OpenAI API key.
 5. Save the changes made in the `apikey.js` file.
 6. Now, open the `index.html` file in your browser to start using the application.
 
