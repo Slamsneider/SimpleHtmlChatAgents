@@ -11,7 +11,7 @@ Aimed for local use and learning as you would publish your API key to the world 
 2. [Installation](#installation)
 3. [How to Use](#how-to-use)
 4. [Code Structure](#code-structure)
-5. [About OpenAI Models](#about-openai-models)
+5. [About OpenAi Models and Tokens](#About OpenAi Models and Tokens)
 6. [Important Note](#important-note)
 7. [Disclaimer](#disclaimer)
 
