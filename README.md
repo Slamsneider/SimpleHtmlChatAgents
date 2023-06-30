@@ -1,5 +1,9 @@
 # SimpleHtmlChatAgents
-This is a simple chat application that uses OpenAI's GPT models to generate responses. The application allows you to choose from different agents, each with their own unique personality and style of communication.
+This is a simple HTML based chat application that uses OpenAI's GPT models to generate responses. The application allows you to choose from different agents, each with their own unique personality and style of communication.
+
+The application is made with simplicity in mind, so it doesn't require any installation or setup. You can simply open the `index.html` file in your browser and start chatting with the agents.
+
+The project is made as a good starting point for anyone who wants to build their own chatbot using GPT models.
 
 ## Features
 
