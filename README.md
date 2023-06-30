@@ -51,19 +51,19 @@ Each model have a different total tokens available for the inference (request). 
 
 As example then `gpt-3.5-turbo` has 4096 tokens available for each request.
 
-When you send a request then the token count consists of the following:
+When sending a request, the token count consists of the following components:
 
-**`system prompt + history + user prompt + max_tokens`**
+- System prompt
+- Conversation history
+- User prompt
+- `max_tokens` parameter
 
-Those added together must be less than the total tokens available for the model or you will get an error.
-
+The sum of these components must be less than the total tokens available for the model, or else an error will occur.
 ### Max Tokens
-The max_tokens parameter controls how many tokens should be reserved to contain the response.
+The `max_tokens` parameter determines how many tokens should be reserved for the response.
 
 ### finish_reason
-The finish_reason parameter indicates the reason why the response ended.
-- `stop`: GOOD - The response contained the stop sequence.
-- `length`: BAD - The response reached the max_tokens limit and is not complete. Use the word "continue" as next prompt to continue the response.
+The `finish_reason` parameter indicates the reason why the response ended. It can be either "stop" or "length". "Stop" means that the response had a 'normal' run, while "length" indicates that the response reached the `max_tokens` limit and is incomplete. If so, then to continue the response, you can use the word "continue" as the next prompt.
 
 ### Temperature
 The temperature parameter controls the randomness of the response. Lower values will result in more predictable responses, while higher values will result in more surprising responses. The default value is 0.7.
