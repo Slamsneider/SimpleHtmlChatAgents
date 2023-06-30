@@ -10,14 +10,12 @@ $(document).ready(function () {
     // Initialize the agent dropdown
     populateAgentDropdown();
     //initialize the token count display
-    $('#TokenUse').text('Tokens Used: 0 ' + AddData);
+    $('#TokenUse').text(AddData);
 
     // ASSORTED FUNCTIONS
     function populateAgentDropdown() {
         let dropdown = $('#agent-dropdown');
         dropdown.empty();
-        //dropdown.append('<option value="">Select an agent</option>');
-
         $.each(agents.agents, function (key, agent) {
             dropdown.append('<option value="' + key + '">' + agent.title + '</option>');
         });
@@ -61,14 +59,15 @@ $(document).ready(function () {
             }),
             success: function (response) {
                 const answer = response.choices[0].message.content;
+                const finReason = response.choices[0].finish_reason;
                 $('#chat-log').append('<p><strong>Assistant:</strong> ' + answer + '</p>');
-
+            
                 // Add the assistant's message to the conversation history
                 conversationHistory.push({ role: 'assistant', content: answer });
-
+            
                 // Update the token count display
                 const tokensUsed = response.usage.total_tokens;
-                $('#TokenUse').text('Tokens Used: ' + tokensUsed + ' ' + AddData);
+                $('#TokenUse').text('Used ' + tokensUsed + ' tokens. stop=' + finReason + ' ' + AddData);
             },
             error: function (xhr) {
                 console.error(xhr.responseText);
@@ -91,7 +90,7 @@ $(document).ready(function () {
         conversationHistory = [];
         // Clear the chat log
         $('#chat-log').empty();
-        $('#TokenUse').text('Tokens Used: 0 ' + AddData);
+        $('#TokenUse').text(AddData);
     });
 
     function showAgentInfo() {
