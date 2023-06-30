@@ -1,5 +1,5 @@
 # SimpleHtmlChatAgents
-This is a simple HTML based chat application that uses OpenAI's GPT models to generate responses. The application allows you to choose from different agents, each with their own unique personality and style of communication.
+This is a simple HTML/javascript based chat application that uses OpenAI's GPT models to generate responses. The application allows you to choose from different agents, each with their own unique personality and style of communication.
 
 You will need your personal OpenAi API-KEY. Get it here: https://platform.openai.com/account/api-keys
 
@@ -66,7 +66,7 @@ The `max_tokens` parameter determines how many tokens should be reserved for the
 The `finish_reason` parameter indicates the reason why the response ended. It can be either "stop" or "length". "Stop" means that the response had a 'normal' run, while "length" indicates that the response reached the `max_tokens` limit and is incomplete. If so, then to continue the response, you can use the word "continue" as the next prompt.
 
 ### Temperature
-The temperature parameter controls the randomness of the response. Lower values will result in more predictable responses, while higher values will result in more surprising responses. The default value is 0.7.
+The temperature parameter controls the randomness of the response. Lower values will result in more predictable responses, while higher values will result in more surprising responses (hallucinations).
 
 
 ## ⚠️Important Note 
