@@ -29,6 +29,19 @@ Aimed for personal use and learning as you would publish your API key to the wor
 5. The token count used for the response and the finish reason is displayed together with the settings for temperature and max_tokens.
 6. If you want to change to another agent, you can do so from the dropdown menu. Note that changing the agent will reset the chat.
 
+## About OpenAi Models
+### Temperature
+The temperature parameter controls the randomness of the response. Lower values will result in more predictable responses, while higher values will result in more surprising responses. The default value is 0.7.
+
+### Max Tokens
+The max_tokens parameter controls the length of the response. The default value is 150.
+
+### finish_reason
+The finish_reason parameter indicates the reason why the response ended.
+- `length`: BAD - The response reached the max_tokens limit. (use "continue" as next prompt to continue the response)
+- `stop`: GOOD - The response contained the stop sequence.
+
+
 ## Code Structure
 
 - `index.html`: This is the main HTML file for the application.
