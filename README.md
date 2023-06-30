@@ -12,6 +12,9 @@ The project is made as a good starting point for anyone who wants to build their
 - Displays the token count used for each response.
 - Conversation history is maintained for the duration of the session.
 
+## Installation
+... and Open the `functions.js` file in a text editor. Find the line that contains `YOUR_API_KEY_HERE` and replace it with your OpenAI API key. Save the file and open the `index.html` file in your browser.
+
 ## How to Use
 
 1. Select a model from the dropdown menu.

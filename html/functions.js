@@ -1,5 +1,6 @@
 $(document).ready(function () {
     const API_ENDPOINT = 'https://api.openai.com/v1/chat/completions';
+    const APIKEY = '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';
 
     // Initialize an empty array to store the conversation history
     let conversationHistory = [];
@@ -43,7 +44,7 @@ $(document).ready(function () {
             type: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': 'Bearer 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'
+                'Authorization': 'Bearer ' + APIKEY
             },
             data: JSON.stringify({
                 model: selectedModel,
