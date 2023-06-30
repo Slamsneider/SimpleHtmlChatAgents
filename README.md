@@ -52,7 +52,7 @@ As example then `gpt-3.5-turbo` has 4096 tokens available for each request.
 
 When you send a request then the token count consists of the following:
 
-**system prompt + history + user prompt + response (max_tokens)**
+**`system prompt + history + user prompt + response (max_tokens)`**
 
 Those added together must be less than the total tokens available for the model.
 
