@@ -3,7 +3,7 @@ This is a simple HTML based chat application that uses OpenAI's GPT models to ge
 
 The project is created to show a simple interface with a GPT chat model without the need for a server or backend.
 
-Aimed for personal use and learning as you would publish your API key to the world if you use it on a public server.
+Aimed for local use and learning as you would publish your API key to the world if you use it on a public server.
 
 1. [Features](#features)
 2. [Installation](#installation)
