@@ -63,8 +63,7 @@ The max_tokens parameter controls how many tokens should be reserved to contain 
 ### finish_reason
 The finish_reason parameter indicates the reason why the response ended.
 - `stop`: GOOD - The response contained the stop sequence.
-- `length`: BAD - The response reached the max_tokens limit and is not complete.
--- (use the word "continue" as next prompt to continue the response)
+- `length`: BAD - The response reached the max_tokens limit and is not complete. Use the word "continue" as next prompt to continue the response.
 
 ### Temperature
 The temperature parameter controls the randomness of the response. Lower values will result in more predictable responses, while higher values will result in more surprising responses. The default value is 0.7.
