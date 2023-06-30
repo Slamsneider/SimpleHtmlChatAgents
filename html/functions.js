@@ -7,8 +7,8 @@ $(document).ready(function () {
     let conversationHistory = [];
 
     populateAgentDropdown();
-    // initialize the TokenUse display
-    $('#TokenUse').text(AddData);
+    
+    $('#TokenUse').text(AddData);// initialize the TokenUse display
     // setup the event handlers
     $('#send-btn').click(sendMessage);
     $('#user-input').keypress(function (e) {
@@ -25,11 +25,11 @@ $(document).ready(function () {
     // ASSORTED FUNCTIONS
     function populateAgentDropdown() {
         let dropdown = $('#agent-dropdown');
-        dropdown.empty();
+        dropdown.empty();// Clear the dropdown
         $.each(agents.agents, function (key, agent) {
             dropdown.append('<option value="' + key + '">' + agent.title + '</option>');
         });
-        showAgentInfo()
+        showAgentInfo();// Show the info for the first agent
     }
 
     function getSelectedAgent() {
@@ -37,17 +37,21 @@ $(document).ready(function () {
         return agents.agents[selectedAgentKey];
     }
 
+    function showAgentInfo() {
+        let selectedAgent = getSelectedAgent();
+        $('#agent-info').html(selectedAgent.info);
+    }
+
     function sendMessage() {
         const userInput = $('#user-input').val();
-        if (userInput.trim() === '') {
+        if (userInput.trim() === '') {// Don't send empty messages
             return;
         }
 
-        $('#chat-log').append('<p><strong>You:</strong> ' + userInput + '</p>');
-        $('#user-input').val('');
+        $('#chat-log').append('<p><strong>You:</strong> ' + userInput + '</p>');// Add the user's message to the chat log
+        $('#user-input').val('');// Clear the user input field
 
-        // Add the user's message to the conversation history
-        conversationHistory.push({ role: 'user', content: userInput });
+        conversationHistory.push({ role: 'user', content: userInput });// Add the user's message to the conversation history
 
         let sysprom = getSelectedAgent().systemprompt;
 
@@ -68,17 +72,17 @@ $(document).ready(function () {
                 max_tokens: max_tokens // Reserve this many tokens to the response
             }),
             success: function (response) {
-                //Log the full response to the console
-                console.log("response", response);
+                console.log("response", response);//Log the full response to the console
 
-                const answer = response.choices[0].message.content;
+                const answer = response.choices[0].message.content;// 0 (first) because we could have ordered multiple responses in same go
                 const finish_reason = response.choices[0].finish_reason;
+                // Add the agents answer to the chat log
                 $('#chat-log').append('<p><strong>' + getSelectedAgent().title + ':</strong> ' + answer + '</p>');
 
-                // Add the assistant's message to the conversation history
+                // Add the assistant's answer to the conversation history
                 conversationHistory.push({ role: 'assistant', content: answer });
 
-                // Update the token count display
+                // Update the TokenUse display
                 const total_tokens = response.usage.total_tokens;
                 $('#TokenUse').text('Used ' + total_tokens + ' tokens. finish_reason=' + finish_reason + ' ' + AddData);
             },
@@ -86,10 +90,5 @@ $(document).ready(function () {
                 console.error(xhr.responseText);
             }
         });
-    }
-
-    function showAgentInfo() {
-        let selectedAgent = getSelectedAgent();
-        $('#agent-info').html(selectedAgent.info);
     }
 });
