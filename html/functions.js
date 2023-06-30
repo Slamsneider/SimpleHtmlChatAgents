@@ -4,14 +4,24 @@ $(document).ready(function () {
     const max_tokens = 400;// Reserve this many tokens to the response
     const AddData = "(temp=" + temperature + " | max_tokens=" + max_tokens + ")"
 
-    // Initialize an empty array to store the conversation history
     let conversationHistory = [];
-    
-    // Initialize the agent dropdown
-    populateAgentDropdown();
-    //initialize the token count display
-    $('#TokenUse').text(AddData);
 
+    populateAgentDropdown();
+    // initialize the TokenUse display
+    $('#TokenUse').text(AddData);
+    // setup the event handlers
+    $('#send-btn').click(sendMessage);
+    $('#user-input').keypress(function (e) {
+        if (e.which === 13) {// Enter key
+            sendMessage();
+        }
+    });
+    $('#agent-dropdown').change(function () {
+        showAgentInfo()
+        conversationHistory = [];// Clear the conversation history
+        $('#chat-log').empty();// Clear the chat log
+        $('#TokenUse').text(AddData);// reset the TokenUse display
+    });
     // ASSORTED FUNCTIONS
     function populateAgentDropdown() {
         let dropdown = $('#agent-dropdown');
@@ -64,10 +74,10 @@ $(document).ready(function () {
                 const answer = response.choices[0].message.content;
                 const finish_reason = response.choices[0].finish_reason;
                 $('#chat-log').append('<p><strong>' + getSelectedAgent().title + ':</strong> ' + answer + '</p>');
-            
+
                 // Add the assistant's message to the conversation history
                 conversationHistory.push({ role: 'assistant', content: answer });
-            
+
                 // Update the token count display
                 const total_tokens = response.usage.total_tokens;
                 $('#TokenUse').text('Used ' + total_tokens + ' tokens. finish_reason=' + finish_reason + ' ' + AddData);
@@ -77,24 +87,6 @@ $(document).ready(function () {
             }
         });
     }
-
-
-    $('#send-btn').click(sendMessage);
-    $('#user-input').keypress(function (e) {
-        if (e.which === 13) {
-            sendMessage();
-        }
-    });
-
-    // Get the selected agent when the dropdown is changed
-    $('#agent-dropdown').change(function () {
-        showAgentInfo()
-        // Clear the conversation history
-        conversationHistory = [];
-        // Clear the chat log
-        $('#chat-log').empty();
-        $('#TokenUse').text(AddData);
-    });
 
     function showAgentInfo() {
         let selectedAgent = getSelectedAgent();
