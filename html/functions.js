@@ -1,6 +1,6 @@
 $(document).ready(function () {
     const API_ENDPOINT = 'https://api.openai.com/v1/chat/completions';
-    const temperature = 0.8;// Set the temperature parameter
+    const temperature = 0.8;// Lower values = predictable responses, Higher values = surprising responses (hallucinations)
     const max_tokens = 400;// Reserve this many tokens to the response
     const AddData = "(temp=" + temperature + " | max_tokens=" + max_tokens + ")"
 

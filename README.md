@@ -45,7 +45,17 @@ Aimed for local use and learning as you would publish your API key to the world 
 - `functions.js`: Main functionality of the application, including sending messages and handling responses.
 - `styles.css`: CSS styles for the application.
 
-## About OpenAi Models
+## About OpenAi Models and Tokens
+Each model have a different total tokens available for the inference (request). One token is approximately 4 characters.
+
+As example then `gpt-3.5-turbo` has 4096 tokens available for each request.
+
+When you send a request then the token count consists of the following:
+**system prompt + history + user prompt + response (max_tokens)**
+
+Those added together must be less than the total tokens available for the model.
+
+
 ### Temperature
 The temperature parameter controls the randomness of the response. Lower values will result in more predictable responses, while higher values will result in more surprising responses. The default value is 0.7.
 
