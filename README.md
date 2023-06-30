@@ -8,8 +8,8 @@ Aimed for personal use and learning as you would publish your API key to the wor
 1. [Features](#features)
 2. [Installation](#installation)
 3. [How to Use](#how-to-use)
-4. [About OpenAI Models](#about-openai-models)
-5. [Code Structure](#code-structure)
+4. [Code Structure](#code-structure)
+5. [About OpenAI Models](#about-openai-models)
 6. [Important Note](#important-note)
 7. [Disclaimer](#disclaimer)
 
@@ -37,6 +37,14 @@ Aimed for personal use and learning as you would publish your API key to the wor
 5. The token count used for the response and the finish reason is displayed together with the settings for temperature and max_tokens.
 6. If you want to change to another agent, you can do so from the dropdown menu. Note that changing the agent will reset the chat.
 
+## Code Structure
+
+- `index.html`: This is the main HTML file for the application.
+- `apikey.js`: This file contains the API key for OpenAI's API.
+- `agents.js`: This file contains the definitions for the different agents.
+- `functions.js`: This file contains the main functionality of the application, including sending messages and handling responses.
+- `styles.css`: This file contains the CSS styles for the application.
+
 ## About OpenAi Models
 ### Temperature
 The temperature parameter controls the randomness of the response. Lower values will result in more predictable responses, while higher values will result in more surprising responses. The default value is 0.7.
@@ -49,14 +57,6 @@ The finish_reason parameter indicates the reason why the response ended.
 - `length`: BAD - The response reached the max_tokens limit. (use "continue" as next prompt to continue the response)
 - `stop`: GOOD - The response contained the stop sequence.
 
-
-## Code Structure
-
-- `index.html`: This is the main HTML file for the application.
-- `apikey.js`: This file contains the API key for OpenAI's API.
-- `agents.js`: This file contains the definitions for the different agents.
-- `functions.js`: This file contains the main functionality of the application, including sending messages and handling responses.
-- `styles.css`: This file contains the CSS styles for the application.
 
 ## Important Note
 
