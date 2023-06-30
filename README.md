@@ -1,12 +1,10 @@
 # SimpleHtmlChatAgents
-Very simple chat interface with short time memory. List with different agents
-
-This is a simple chat application that uses OpenAI's GPT-3.5-Turbo model to generate responses. The application allows you to choose from different agents, each with their own unique personality and style of communication.
+This is a simple chat application that uses OpenAI's GPT models to generate responses. The application allows you to choose from different agents, each with their own unique personality and style of communication.
 
 ## Features
 
 - Multiple agents to choose from, each with a unique personality.
-- Option to select different models based on token count.
+- Option to select different GPT models.
 - Displays the token count used for each response.
 - Conversation history is maintained for the duration of the session.
 
