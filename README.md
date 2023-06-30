@@ -5,6 +5,14 @@ The project is created to show a simple interface with a GPT chat model without 
 
 Aimed for personal use and learning as you would publish your API key to the world if you use it on a public server.
 
+1. [Features](#features)
+2. [Installation](#installation)
+3. [How to Use](#how-to-use)
+4. [About OpenAI Models](#about-openai-models)
+5. [Code Structure](#code-structure)
+6. [Important Note](#important-note)
+7. [Disclaimer](#disclaimer)
+
 ## Features
 
 - Option to select different GPT models.
