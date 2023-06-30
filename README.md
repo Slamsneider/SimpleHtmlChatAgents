@@ -34,7 +34,7 @@ Aimed for personal use and learning as you would publish your API key to the wor
 The temperature parameter controls the randomness of the response. Lower values will result in more predictable responses, while higher values will result in more surprising responses. The default value is 0.7.
 
 ### Max Tokens
-The max_tokens parameter controls the length of the response. The default value is 150.
+The max_tokens parameter controls how many tokens should be reserved to contain the response.
 
 ### finish_reason
 The finish_reason parameter indicates the reason why the response ended.
