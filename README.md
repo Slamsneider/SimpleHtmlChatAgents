@@ -30,9 +30,10 @@ Aimed for personal use and learning as you would publish your API key to the wor
 
 ## Code Structure
 
+- `index.html`: This is the main HTML file for the application.
+- `apikey.js`: This file contains the API key for OpenAI's API.
 - `agents.js`: This file contains the definitions for the different agents.
 - `functions.js`: This file contains the main functionality of the application, including sending messages and handling responses.
-- `index.html`: This is the main HTML file for the application.
 - `styles.css`: This file contains the CSS styles for the application.
 
 ## Note
