@@ -21,6 +21,8 @@ Aimed for local use and learning as you would publish your API key to the world 
 - Displays the token count used for each response.
 - Conversation history is maintained for the duration of the session.
 
+![image](https://github.com/Slamsneider/SimpleHtmlChatAgents/assets/192285/e667f284-d9ab-4087-be6b-9efb584e506c)
+
 ## Installation
 1. Press the green "Code" button on this page and choose "Download ZIP" to download the project.
 2. Once downloaded, unzip the html folder to your desired location.
