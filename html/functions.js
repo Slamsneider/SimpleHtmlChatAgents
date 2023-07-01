@@ -23,6 +23,7 @@ $(document).ready(function () {
         $('#chat-log').empty();// Clear the chat log
         $('#TokenUse').text(AddData);// reset the TokenUse display
     });
+    // FUNCTIONS
     function sendMessage() {
         const userInput = $('#user-input').val();
         if (userInput.trim() === '') {// Don't send empty messages
