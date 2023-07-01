@@ -1,10 +1,13 @@
-$(document).ready(function () {
-    const API_ENDPOINT = 'https://api.openai.com/v1/chat/completions';
-    const temperature = 0.8;// Lower values = predictable responses, Higher values = surprising responses (hallucinations)
-    const max_tokens = 400;// Reserve this many tokens to the response
-    const AddData = "(temp=" + temperature + " | max_tokens=" + max_tokens + ")"
 
-    let conversationHistory = [];
+const API_ENDPOINT = 'https://api.openai.com/v1/chat/completions';
+const temperature = 0.8;// Lower values = predictable responses, Higher values = surprising responses (hallucinations)
+const max_tokens = 400;// Reserve this many tokens to the response
+const AddData = "(temp=" + temperature + " | max_tokens=" + max_tokens + ")"
+let conversationHistory = [];
+let selectedModel = "";
+let sysprom = "";
+
+$(document).ready(function () {
 
     populateAgentDropdown();
 
@@ -23,58 +26,62 @@ $(document).ready(function () {
         $('#chat-log').empty();// Clear the chat log
         $('#TokenUse').text(AddData);// reset the TokenUse display
     });
-    // FUNCTIONS
-    function sendMessage() {
-        const userInput = $('#user-input').val();
-        if (userInput.trim() === '') {// Don't send empty messages
-            return;
-        }
-
-        $('#chat-log').append('<p><strong>You:</strong> ' + userInput + '</p>');// Add the user's message to the chat log
-        $('#user-input').val('');// Clear the user input field
-
-        conversationHistory.push({ role: 'user', content: userInput });// Add the user's message to the conversation history
-
-        let sysprom = getSelectedAgent().systemprompt;
-
-        let selectedModel = $('#model-dropdown').val();
-
-        $.ajax({
-            url: API_ENDPOINT,
-            type: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + APIKEY
-            },
-            data: JSON.stringify({
-                model: selectedModel,
-                // Prepend the conversation history to the messages
-                messages: [{ role: 'system', content: sysprom }].concat(conversationHistory),
-                temperature: temperature, // Set the temperature parameter
-                max_tokens: max_tokens // Reserve this many tokens to the response
-            }),
-            success: function (response) {
-                console.log("response", response);//Log the full response to the console
-
-                const answer = response.choices[0].message.content;// 0 (first) because we could have ordered multiple responses in same go
-                const finish_reason = response.choices[0].finish_reason;
-                // Add the agents answer to the chat log
-                $('#chat-log').append('<p><strong>' + getSelectedAgent().title + ':</strong> ' + answer + '</p>');
-
-                // Add the assistant's answer to the conversation history
-                conversationHistory.push({ role: 'assistant', content: answer });
-
-                // Update the TokenUse display
-                const total_tokens = response.usage.total_tokens;
-                $('#TokenUse').text('Used ' + total_tokens + ' tokens. finish_reason=' + finish_reason + ' ' + AddData);
-            },
-            error: function (xhr) {
-                console.error(xhr.responseText);
-            }
-        });
-    }
 });
 // ASSORTED FUNCTIONS
+function sendMessage() {
+    const userInput = $('#user-input').val();
+    if (userInput.trim() === '') {// Don't send empty messages
+        return;
+    }
+
+    $('#chat-log').append('<p><strong>You:</strong> ' + userInput + '</p>');// Add the user's message to the chat log
+    $('#user-input').val('');// Clear the user input field
+
+    conversationHistory.push({ role: 'user', content: userInput });// Add the user's message to the conversation history
+
+    sysprom = getSelectedAgent().systemprompt;
+
+    selectedModel = $('#model-dropdown').val();
+    callOpenai();
+}
+function callOpenai() {
+    $.ajax({
+        url: API_ENDPOINT,
+        type: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + APIKEY
+        },
+        data: JSON.stringify({
+            model: selectedModel,
+            // Prepend the conversation history to the messages
+            messages: [{ role: 'system', content: sysprom }].concat(conversationHistory),
+            temperature: temperature, // Set the temperature parameter
+            max_tokens: max_tokens // Reserve this many tokens to the response
+        }),
+        success: function (response) {
+            console.log("response", response);//Log the full response to the console
+            doReturn(response);
+        },
+        error: function (xhr) {
+            console.error(xhr.responseText);
+        }
+    });
+}
+function doReturn(response) {
+    const answer = response.choices[0].message.content;// 0 (first) because we could have ordered multiple responses in same go
+    const finish_reason = response.choices[0].finish_reason;
+    // Add the agents answer to the chat log
+    $('#chat-log').append('<p><strong>' + getSelectedAgent().title + ':</strong> ' + answer + '</p>');
+
+    // Add the assistant's answer to the conversation history
+    conversationHistory.push({ role: 'assistant', content: answer });
+
+    // Update the TokenUse display
+    const total_tokens = response.usage.total_tokens;
+    $('#TokenUse').text('Used ' + total_tokens + ' tokens. finish_reason=' + finish_reason + ' ' + AddData);
+
+}
 function populateAgentDropdown() {
     let dropdown = $('#agent-dropdown');
     dropdown.empty();// Clear the dropdown
