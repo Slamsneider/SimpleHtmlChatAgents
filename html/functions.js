@@ -7,8 +7,9 @@ $(document).ready(function () {
     let conversationHistory = [];
 
     populateAgentDropdown();
-    
+
     $('#TokenUse').text(AddData);// initialize the TokenUse display
+
     // setup the event handlers
     $('#send-btn').click(sendMessage);
     $('#user-input').keypress(function (e) {
@@ -22,26 +23,6 @@ $(document).ready(function () {
         $('#chat-log').empty();// Clear the chat log
         $('#TokenUse').text(AddData);// reset the TokenUse display
     });
-    // ASSORTED FUNCTIONS
-    function populateAgentDropdown() {
-        let dropdown = $('#agent-dropdown');
-        dropdown.empty();// Clear the dropdown
-        $.each(agents.agents, function (key, agent) {
-            dropdown.append('<option value="' + key + '">' + agent.title + '</option>');
-        });
-        showAgentInfo();// Show the info for the first agent
-    }
-
-    function getSelectedAgent() {
-        let selectedAgentKey = $('#agent-dropdown').val();
-        return agents.agents[selectedAgentKey];
-    }
-
-    function showAgentInfo() {
-        let selectedAgent = getSelectedAgent();
-        $('#agent-info').html(selectedAgent.info);
-    }
-
     function sendMessage() {
         const userInput = $('#user-input').val();
         if (userInput.trim() === '') {// Don't send empty messages
@@ -92,3 +73,22 @@ $(document).ready(function () {
         });
     }
 });
+// ASSORTED FUNCTIONS
+function populateAgentDropdown() {
+    let dropdown = $('#agent-dropdown');
+    dropdown.empty();// Clear the dropdown
+    $.each(agents.agents, function (key, agent) {
+        dropdown.append('<option value="' + key + '">' + agent.title + '</option>');
+    });
+    showAgentInfo();// Show the info for the first agent
+}
+
+function getSelectedAgent() {
+    let selectedAgentKey = $('#agent-dropdown').val();
+    return agents.agents[selectedAgentKey];
+}
+
+function showAgentInfo() {
+    let selectedAgent = getSelectedAgent();
+    $('#agent-info').html(selectedAgent.info);
+}
