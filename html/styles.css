@@ -3,10 +3,6 @@ body {
     background-color: aliceblue;
 }
 
-td {
-    vertical-align: top;
-}
-
 .small {
     font-size: 0.8em;
 }
