@@ -18,7 +18,7 @@ $(document).ready(function () {
         }
     });
     $('#agent-dropdown').change(function () {
-        showAgentInfo()
+        $('#agent-info').html(getSelectedAgent().info);// Show the info for the selected agent
         conversationHistory = [];// Clear the conversation history
         $('#chat-log').empty();// Clear the chat log
         $('#TokenUse').text(strShowSettings);// reset the TokenUse display
@@ -86,15 +86,10 @@ function populateAgentDropdown() {
     $.each(agents.agents, function (key, agent) {
         dropdown.append('<option value="' + key + '">' + agent.title + '</option>');
     });
-    showAgentInfo();// Show the info for the first agent
+    $('#agent-info').html(getSelectedAgent().info);// Show the info for the selected agent
 }
 
 function getSelectedAgent() {
     let selectedAgentKey = $('#agent-dropdown').val();
     return agents.agents[selectedAgentKey];
-}
-
-function showAgentInfo() {
-    let selectedAgent = getSelectedAgent();
-    $('#agent-info').html(selectedAgent.info);
 }
