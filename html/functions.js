@@ -1,7 +1,7 @@
 
 const myTemperature = 0.8;// Lower values = predictable responses, Higher values = surprising responses (hallucinations)
 const myMax_tokens = 400;// Reserve this many tokens to the response
-const strShowSettings = "(temp=" + myTemperature + " | max_tokens=" + myMax_tokens + ")"
+const strShowSettings = "(temp=${myTemperature} | max_tokens=${myMax_tokens})";
 let conversationHistory = [];
 
 $(document).ready(function () {
