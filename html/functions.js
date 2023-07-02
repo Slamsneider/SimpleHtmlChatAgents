@@ -78,7 +78,9 @@ class ChatApp {
 }
 
 $(document).ready(function () {
-    const chatApp = new ChatApp(0.8, 400);//temperature, max_tokens
+    const myTemperature = 0.8;// Lower values = predictable responses, Higher values = surprising responses (hallucinations)
+    const myMax_tokens = 400;// Reserve this many tokens to the response
+    const chatApp = new ChatApp(myTemperature, myMax_tokens);
 
     chatApp.populateAgentDropdown();
 
