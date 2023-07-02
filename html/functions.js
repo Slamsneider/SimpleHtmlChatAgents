@@ -1,11 +1,8 @@
 
-const API_ENDPOINT = 'https://api.openai.com/v1/chat/completions';
-const temperature = 0.8;// Lower values = predictable responses, Higher values = surprising responses (hallucinations)
-const max_tokens = 400;// Reserve this many tokens to the response
-const AddData = "(temp=" + temperature + " | max_tokens=" + max_tokens + ")"
+const myTemperature = 0.8;// Lower values = predictable responses, Higher values = surprising responses (hallucinations)
+const myMax_tokens = 400;// Reserve this many tokens to the response
+const AddData = "(temp=" + myTemperature + " | max_tokens=" + myMax_tokens + ")"
 let conversationHistory = [];
-let selectedModel = "";
-let sysprom = "";
 
 $(document).ready(function () {
 
@@ -33,29 +30,30 @@ function sendMessage() {
     if (userInput.trim() === '') {// Don't send empty messages
         return;
     }
+    const selectedModel = $('#model-dropdown').val();
+    const sysprom = getSelectedAgent().systemprompt;
 
-    $('#chat-log').append('<p><strong>You:</strong> ' + userInput + '</p>');// Add the user's message to the chat log
+    $('#chat-log').append('<p><strong>You:</strong> ' + userInput + '</p>');// Add the user's prompt to the chat log
     $('#user-input').val('');// Clear the user input field
 
-    conversationHistory.push({ role: 'user', content: userInput });// Add the user's message to the conversation history
+    conversationHistory.push({ role: 'user', content: userInput });// Add the user's prompt to the conversation history
 
-    sysprom = getSelectedAgent().systemprompt;
 
-    selectedModel = $('#model-dropdown').val();
-    callOpenai();
+    // build the full prompt by concatenating the conversation history and the system prompt
+    const FullPrompt = [{ role: 'system', content: sysprom }].concat(conversationHistory)
+    callOpenai(selectedModel, FullPrompt, myTemperature, myMax_tokens);
 }
-function callOpenai() {
+function callOpenai(model, messages, temperature, max_tokens) {
     $.ajax({
-        url: API_ENDPOINT,
+        url: 'https://api.openai.com/v1/chat/completions',
         type: 'POST',
         headers: {
             'Content-Type': 'application/json',
             'Authorization': 'Bearer ' + APIKEY
         },
         data: JSON.stringify({
-            model: selectedModel,
-            // Prepend the conversation history to the messages
-            messages: [{ role: 'system', content: sysprom }].concat(conversationHistory),
+            model: model,
+            messages: messages,
             temperature: temperature, // Set the temperature parameter
             max_tokens: max_tokens // Reserve this many tokens to the response
         }),
