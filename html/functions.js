@@ -1,14 +1,14 @@
 
 const myTemperature = 0.8;// Lower values = predictable responses, Higher values = surprising responses (hallucinations)
 const myMax_tokens = 400;// Reserve this many tokens to the response
-const AddData = "(temp=" + myTemperature + " | max_tokens=" + myMax_tokens + ")"
+const strShowSettings = "(temp=" + myTemperature + " | max_tokens=" + myMax_tokens + ")"
 let conversationHistory = [];
 
 $(document).ready(function () {
 
     populateAgentDropdown();
 
-    $('#TokenUse').text(AddData);// initialize the TokenUse display
+    $('#TokenUse').text(strShowSettings);// initialize the TokenUse display
 
     // setup the event handlers
     $('#send-btn').click(sendMessage);
@@ -21,7 +21,7 @@ $(document).ready(function () {
         showAgentInfo()
         conversationHistory = [];// Clear the conversation history
         $('#chat-log').empty();// Clear the chat log
-        $('#TokenUse').text(AddData);// reset the TokenUse display
+        $('#TokenUse').text(strShowSettings);// reset the TokenUse display
     });
 });
 // ASSORTED FUNCTIONS
@@ -77,7 +77,7 @@ function doResponse(response) {
 
     // Update the TokenUse display
     const total_tokens = response.usage.total_tokens;
-    $('#TokenUse').text('Used ' + total_tokens + ' tokens. finish_reason=' + finish_reason + ' ' + AddData);
+    $('#TokenUse').text('Used ' + total_tokens + ' tokens. finish_reason=' + finish_reason + ' ' + strShowSettings);
 
 }
 function populateAgentDropdown() {
