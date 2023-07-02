@@ -61,14 +61,14 @@ function callOpenai() {
         }),
         success: function (response) {
             console.log("response", response);//Log the full response to the console
-            doReturn(response);
+            doResponse(response);
         },
         error: function (xhr) {
             console.error(xhr.responseText);
         }
     });
 }
-function doReturn(response) {
+function doResponse(response) {
     const answer = response.choices[0].message.content;// 0 (first) because we could have ordered multiple responses in same go
     const finish_reason = response.choices[0].finish_reason;
     // Add the agents answer to the chat log
