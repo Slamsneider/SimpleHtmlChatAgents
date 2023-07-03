@@ -5,6 +5,8 @@ You will need your personal OpenAi API-KEY. Get it here: https://platform.openai
 
 The project is created to provide you with a simple interface running a GPT chat model without the need for a server or backend. This so you easily can expand on the project. If you know a little HTML/Javascript this project is a made for you to learn how to use OpenAI's API.
 
+This is NOT a full fledged chat application but you can make it one if you want to.
+
 Aimed for local use and learning as you would publish your API key to the world if you use it on a public server.
 
 1. [Features](#features)
