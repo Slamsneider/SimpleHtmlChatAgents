@@ -71,10 +71,10 @@ class ChatApp {
         const finish_reason = response.choices[0].finish_reason;
         const total_tokens = response.usage.total_tokens;
 
-        //add response to chat log
+        //add answer to chat log
         $('#chat-log').val($('#chat-log').val() + `${this.getSelectedAgent().title}: ${answer}\n\n`);
 
-        //add response to conversation history
+        //add answer to conversation history
         this.conversationHistory.push({ role: 'assistant', content: answer });
 
         //update TokenUse
