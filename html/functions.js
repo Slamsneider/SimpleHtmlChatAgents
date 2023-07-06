@@ -28,14 +28,17 @@ class ChatApp {
         const selectedModel = $('#model-dropdown').val();
         const sysprom = this.getSelectedAgent().systemprompt;
 
+        //add user message to chat log
         $('#chat-log').val($('#chat-log').val() + `You: ${userInput}\n\n`);
-        $('#user-input').val('');
+        $('#user-input').val('');//clear user input field
 
         //add user message to conversation history
         this.conversationHistory.push({ role: 'user', content: userInput });
+
         //system prompt + conversation history
         const FullPrompt = [{ role: 'system', content: sysprom }].concat(this.conversationHistory);
 
+        //Inferense call
         this.callOpenai(selectedModel, FullPrompt, this.temperature, this.max_tokens);
     }
 
@@ -54,7 +57,7 @@ class ChatApp {
                 max_tokens: max_tokens
             }),
             success: (response) => {
-                console.log("response", response);//dump full response to console
+                console.log("response", response);//dump full response object to console
                 this.doResponse(response);
             },
             error: function (xhr) {
@@ -67,12 +70,14 @@ class ChatApp {
         const answer = response.choices[0].message.content;
         const finish_reason = response.choices[0].finish_reason;
 
+        //add response to chat log
         $('#chat-log').val($('#chat-log').val() + `${this.getSelectedAgent().title}: ${answer}\n\n`);
 
+        //add response to conversation history
         this.conversationHistory.push({ role: 'assistant', content: answer });
 
         const total_tokens = response.usage.total_tokens;
-        //update token usage
+        //update TokenUse
         $('#TokenUse').text(`Used ${total_tokens} tokens. finish_reason=${finish_reason} ${this.strShowSettings}`);
     }
 }
@@ -85,17 +90,21 @@ $(document).ready(function () {
     chatApp.populateAgentDropdown();
 
     $('#TokenUse').text(chatApp.strShowSettings);
-
+    
+    //setup event handlers
     $('#send-btn').click(() => chatApp.sendMessage());
     $('#user-input').keypress(function (e) {
-        if (e.which === 13) {
+        if (e.which === 13) {//enter key
             chatApp.sendMessage();
         }
     });
     $('#agent-dropdown').change(function () {
         $('#agent-info').html(chatApp.getSelectedAgent().info);
+        
+        //clear chat log and conversation history
         chatApp.conversationHistory = [];
         $('#chat-log').val('');
+
         $('#TokenUse').text(chatApp.strShowSettings);
     });
 });
