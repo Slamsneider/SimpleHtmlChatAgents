@@ -38,7 +38,7 @@ class ChatApp {
         //system prompt + conversation history
         const FullPrompt = [{ role: 'system', content: sysprom }].concat(this.conversationHistory);
 
-        //Inferense call
+        //Inference call
         this.callOpenai(selectedModel, FullPrompt, this.temperature, this.max_tokens);
     }
 
