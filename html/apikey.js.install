@@ -1,2 +1,2 @@
+//Rename this file to apikey.js and add your API key below
 const APIKEY = "YOUR_API_KEY_HERE";
-
