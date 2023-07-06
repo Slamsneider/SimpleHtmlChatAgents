@@ -27,7 +27,7 @@ Aimed for local use and learning as you would publish your API key to the world 
 
 ## Installation
 1. Press the green "Code" button on the project page and choose "Download ZIP" to download the project. (or [download here](https://github.com/Slamsneider/SimpleHtmlChatAgents/archive/refs/heads/main.zip))
-2. Once downloaded, unzip the html folder to your desired location.
+2. Once downloaded, unzip the `html` folder to your desired location.
 3. **RENAME** `apikey.js.install` to `apikey.js` and open the file in a text editor.
 4. Replace `YOUR_API_KEY_HERE` with your OpenAI API key.
 5. Save the changes made in the `apikey.js` file.
