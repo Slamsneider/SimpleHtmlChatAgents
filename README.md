@@ -67,7 +67,7 @@ The sum of these components must be less than the total tokens available for the
 The `max_tokens` parameter determines how many tokens should be reserved for the response.
 
 ### finish_reason
-The `finish_reason` indicates the reason why the response ended. It can be either "stop" or "length". "Stop" means that the response had a 'normal' run, while "length" indicates that the response reached the `max_tokens` limit and is incomplete. If so, then to continue the response, you can use the word "continue" as the next prompt.
+The `finish_reason` indicates the reason why the response ended. It can be either "stop" or "length". "stop" means that the response had a 'normal' run, while "length" indicates that the response reached the `max_tokens` limit and is incomplete. If so, then to continue the response, you can use the word "continue" as the next prompt.
 
 ### Temperature
 The temperature parameter controls the randomness of the response. Lower values will result in more predictable responses, while higher values will result in more surprising responses (hallucinations).
