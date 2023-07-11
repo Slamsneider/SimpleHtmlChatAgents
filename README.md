@@ -63,10 +63,10 @@ When sending a request, the token count consists of the following components:
 - `max_tokens` parameter value
 
 The sum of these components must be less than the total tokens available for the model, or else an error will occur.
-### max_tokens
+### max_tokens (parameter)
 The `max_tokens` parameter determines how many tokens should be reserved for the response.
 
-### finish_reason (parameter)
+### finish_reason (output)
 The `finish_reason` indicates the reason why the response ended. It can be either "stop" or "length". "stop" means that the response had a 'normal' run, while "length" indicates that the response reached the `max_tokens` limit and is incomplete. If so, then to continue the response, you can use the word "continue" as the next prompt.
 
 ### temperature (parameter)
