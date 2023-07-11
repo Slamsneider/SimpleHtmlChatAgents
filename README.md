@@ -79,4 +79,4 @@ Do not use this application on a public server as it will expose your API key to
 
 ## Disclaimer
 
-This application is made for learning and is not intended to be a full fledged chat application.
+This application is made for learning and is not a full fledged chat application.
