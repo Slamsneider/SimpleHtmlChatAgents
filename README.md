@@ -60,10 +60,10 @@ When sending a request, the token count consists of the following components:
 - System prompt
 - Conversation history
 - User prompt
-- `max_tokens` parameter
+- `max_tokens` parameter value
 
 The sum of these components must be less than the total tokens available for the model, or else an error will occur.
-### Max Tokens
+### Max_Tokens
 The `max_tokens` parameter determines how many tokens should be reserved for the response.
 
 ### finish_reason
